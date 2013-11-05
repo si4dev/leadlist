@@ -2,6 +2,7 @@
 class page_index extends Page {
     function init(){
         parent::init();
-        $this->add('H1')->set('Welcome');
+
+        $this->add('CRUD')->setModel('Lead');
     }
 }
