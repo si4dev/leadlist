@@ -5,9 +5,10 @@ class page_index extends Page {
         $m = $this->add('Model_Lead');
         $g = $this->add('Grid');
         $g->addColumn('button','action' ,'Add Action');
+        $g->addColumn('Expander', 'leads_actions', 'Actions List');
         $g->setModel($m);
 
-        $g->addPaginator(1000);
+        $g->addPaginator(100);
 
 
         if($id = $_GET['action']){
