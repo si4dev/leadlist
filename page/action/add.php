@@ -8,7 +8,7 @@ class page_action_add extends Page {
             $m = $this->add('Model_Action');
 
             $f = $this->add('Form');
-            $f->setModel($m , array('lead_id', 'type', 'notes'));
+            $f->setModel($m , array('lead_id','status_id', 'type', 'notes'));
             $f->set('lead_id', $id);
             $f->addSubmit();
 
