@@ -4,10 +4,24 @@ class page_leads_actions extends Page {
         parent::init();
 
         if($id = $_GET['index_id']){
+            $this->api->stickyGET('index_id');
             $m = $this->add('Model_Action');
             $m->addCondition('lead_id', $id);
 
-            $this->add('Grid')->setModel($m);
+            $g = $this->add('Grid');
+            $g->setModel($m);
+
+            $g->addColumn('Button', 'close');
+
+            if($_GET['close']){
+                $o = $m->load($_GET['close']);
+                $o->set('closed', true);
+                $o->update();
+                $this->js(true, array(
+                    $this->js()->univ()->successMessage('Closed!'),
+                    $g->js()->reload()
+                    ))->execute();
+            }
 
         }
     }
