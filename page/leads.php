@@ -7,7 +7,7 @@ class page_leads extends Page {
         $c->setModel('Lead');
 
         if($c->grid){
-            $b = $c->grid->addButton('upload');
+            $b = $c->grid->addButton('Import');
         }
     }
 }

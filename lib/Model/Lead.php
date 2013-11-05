@@ -15,6 +15,6 @@ class Model_Lead extends Model_Table {
         $this->addField('postcode');
         $this->addField('city');
 
-        $this->hasMany('Actions');
+        $this->hasMany('Action');
     }
 }

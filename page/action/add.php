@@ -5,7 +5,7 @@ class page_action_add extends Page {
         if($id = $_GET['id']){
             $this->api->stickyGET('id');
 
-            $m = $this->add('Model_Actions');
+            $m = $this->add('Model_Action');
 
             $f = $this->add('Form');
             $f->setModel($m , array('lead_id', 'type', 'notes'));
@@ -15,8 +15,7 @@ class page_action_add extends Page {
             if($f->isSubmitted()){
                 $f->model->set('schedule', $m->dsql()->expr('now()'));
                 $f->update();
-                
-                $this->js()->univ()->successMessage('Saved');
+                $this->js()->univ()->successMessage('Saved')->execute();
             }
         }
     }
