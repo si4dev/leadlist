@@ -6,7 +6,7 @@ class Model_Lead extends Model_Table {
         parent::init();
 
         $this->addField('company');
-        $this->addField('contactperson');
+        $this->addField('contactperson')->Caption('Contact');
         $this->addField('phone');
         $this->addField('email');
         $this->addField('website');
@@ -14,5 +14,7 @@ class Model_Lead extends Model_Table {
         $this->addField('address');
         $this->addField('postcode');
         $this->addField('city');
+
+        $this->hasMany('Actions');
     }
 }

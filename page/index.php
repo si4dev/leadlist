@@ -2,7 +2,14 @@
 class page_index extends Page {
     function init(){
         parent::init();
+        $m = $this->add('Model_Lead');
+        $g = $this->add('Grid');
+        $g->setModel($m);
 
-        $this->add('CRUD')->setModel('Lead');
+        $g->addColumn('button','action');
+
+        if($id = $_GET['action']){
+            $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
+        }
     }
 }
