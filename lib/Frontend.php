@@ -20,5 +20,6 @@ class Frontend extends ApiFrontend {
     $menu->addMenuItem('index', 'Home');
     $menu->addMenuItem('leads');
     $menu->addMenuItem('actions');
+    $menu->addMenuItem('status');
   }
 }

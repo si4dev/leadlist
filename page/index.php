@@ -4,9 +4,11 @@ class page_index extends Page {
         parent::init();
         $m = $this->add('Model_Lead');
         $g = $this->add('Grid');
+        $g->addColumn('button','action' ,'Add Action');
         $g->setModel($m);
 
-        $g->addColumn('button','action' ,'Add Action');
+        $g->addPaginator(1000);
+
 
         if($id = $_GET['action']){
             $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
