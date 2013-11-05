@@ -1,6 +1,6 @@
 <?php
 class Model_Action extends Model_Table {
-    public $table = 'actions';
+    public $table = 'action';
 
     function init(){
         parent::init();
