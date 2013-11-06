@@ -3,9 +3,10 @@ class page_index extends Page {
     function init(){
         parent::init();
         $m = $this->add('Model_Lead');
+
         $g = $this->add('Grid');
-        $g->addColumn('button','action' ,'Add Action');
-        $g->addColumn('Expander', 'leads_actions', 'Actions List');
+        $g->addColumn('button','action' ,'Action');
+        //$g->addColumn('Expander', 'leads_actions', 'Actions List');
         $g->setModel($m);
 
         $g->addOrder()->move('status','first')->now();

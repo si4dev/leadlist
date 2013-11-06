@@ -21,7 +21,11 @@ class page_action_add extends Page {
             {
                 $f->model->set('schedule', $m->dsql()->expr('now()'));
                 $f->update();
-                $this->js()->univ()->successMessage('Saved')->execute();
+
+                $this->js(true , array(
+                    $this->js()->univ()->successMessage('Saved'),
+                    $this->js()->univ()->redirect('index')
+                ))->execute();
             }
         }
     }
