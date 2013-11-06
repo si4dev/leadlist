@@ -9,6 +9,7 @@ class page_index extends Page {
         $g->setModel($m);
 
         $g->addOrder()->move('status','first')->now();
+        $qs = $g->addQuickSearch(array('status'));
 
         $g->addPaginator(100);
 
