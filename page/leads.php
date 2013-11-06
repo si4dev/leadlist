@@ -9,7 +9,7 @@ class page_leads extends Page {
         if($c->grid)
         {
             $b = $c->grid->addButton('Import');
-            $c->grid->addPaginator(1000);
+            $c->grid->addPaginator(100);
         }
     }
 }

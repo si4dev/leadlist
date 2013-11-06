@@ -6,11 +6,15 @@ class page_action_add extends Page {
         {
             $this->api->stickyGET('id');
 
-            $m = $this->add('Model_Action');
+            $lead = $this->add('Model_Lead')->load($id);
+            $m = $lead->ref('Action');
+            $m->tryLoadAny();
+            if(!$m->loaded()){
+                $m->set('lead_id' , $id);
+            }
 
             $f = $this->add('Form');
-            $f->setModel($m , array('lead_id','status_id', 'type', 'notes'));
-            $f->set('lead_id', $id);
+            $f->setModel($m);
             $f->addSubmit();
 
             if($f->isSubmitted())

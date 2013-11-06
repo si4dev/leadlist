@@ -8,6 +8,8 @@ class page_index extends Page {
         $g->addColumn('Expander', 'leads_actions', 'Actions List');
         $g->setModel($m);
 
+        $g->addOrder()->move('status','first')->now();
+
         $g->addPaginator(100);
 
         if($id = $_GET['action'])

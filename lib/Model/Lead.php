@@ -19,5 +19,9 @@ class Model_Lead extends Model_Table {
         $this->addField('personnel');
 
         $this->hasMany('Action');
+
+        $this->addExpression('status', function($m, $q){
+          return $m->refSQL('Action')->fieldQuery('status');
+        });
     }
 }
