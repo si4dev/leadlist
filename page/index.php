@@ -10,8 +10,8 @@ class page_index extends Page {
 
         $g->addPaginator(100);
 
-
-        if($id = $_GET['action']){
+        if($id = $_GET['action'])
+        {
             $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
         }
     }
