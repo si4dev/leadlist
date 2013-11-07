@@ -13,6 +13,11 @@ class Frontend extends ApiFrontend {
                     ))
 
     )->setParent($this->pathfinder->base_location);
+    
+    $this->addLocation('templates', array(
+		'js' => 'js',
+		'css'=> 'css'
+		))->setParent($this->pathfinder->base_location);
 
     $this->add('jUI');
 

@@ -2,6 +2,10 @@
 class page_action_add extends Page {
     function init(){
         parent::init();
+
+        $this->js()->_load('jquery.simple-dtpicker');
+        $this->js()->_css('jquery.simple-dtpicker');
+
         if($id = $_GET['id'])
         {
             $this->api->stickyGET('id');
@@ -15,11 +19,12 @@ class page_action_add extends Page {
 
             $f = $this->add('Form');
             $f->setModel($m);
+
+            $f->getElement('schedule')->js(true)->appendDtpicker(array('inline'=>'true'))->debug();
             $f->addSubmit();
 
             if($f->isSubmitted())
             {
-                $f->model->set('schedule', $m->dsql()->expr('now()'));
                 $f->update();
 
                 $this->js(true , array(

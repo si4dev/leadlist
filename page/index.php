@@ -6,7 +6,7 @@ class page_index extends Page {
 
         $g = $this->add('Grid');
         $g->addColumn('button','action' ,'Action');
-        //$g->addColumn('Expander', 'leads_actions', 'Actions List');
+        $g->addColumn('Expander', 'leads_actions', 'Actions List');
         $g->setModel($m);
 
         $g->addOrder()->move('status','first')->now();

@@ -12,7 +12,6 @@ class page_leads_actions extends Page {
             $g = $this->add('Grid');
             $g->setModel($m);
 
-            $g->addColumn('Button', 'close');
 
             if($_GET['close'])
             {
