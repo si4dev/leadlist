@@ -31,6 +31,8 @@ class page_index extends Page {
         $gc->addColumn('button', 'edit');
         $gc->setModel($mcall);
 
+        $gc->addColumn('expander', 'lead');
+
 
 
         $memail= clone($m);
@@ -38,6 +40,8 @@ class page_index extends Page {
         $ge = $email->add('Grid');
         $ge->addColumn('button', 'edit');
         $ge->setModel($memail);
+
+        $ge->addColumn('expander', 'lead');
 
         $leads = $tt->addTab('New Leads');
 

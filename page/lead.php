@@ -4,13 +4,26 @@ class page_lead extends Page {
     function init(){
         parent::init();
 
-        $this->add('H1')->set('Lead');
+        if($_GET['action_id']){
 
-        $m = $this->add('Model_Action');
-        $action = $m->load($_GET['action_id']);
+            $this->api->stickyGET('action_id');
+            
+            $this->add('H1')->set('Lead');
 
-        $lead = $action->ref('lead_id');
+            $m = $this->add('Model_Action');
+            $action = $m->load($_GET['action_id']);
 
+            $lead = $action->ref('lead_id');
+
+            $f = $this->add('Form');
+            $f->setModel($lead);
+            $f->addSubmit();
+
+            if($f->isSubmitted()){
+                $f->update();
+                $this->js()->univ()->successMessage('Saved!')->execute();
+            }
+        }
 
     }
 }
