@@ -20,7 +20,7 @@ class page_action_add extends Page {
             $f = $this->add('Form');
             $f->setModel($m);
 
-            $f->getElement('schedule')->js(true)->appendDtpicker(array('inline'=>'true'))->debug();
+            $f->getElement('schedule')->js(true)->appendDtpicker(array('inline'=>'true'));
             $f->addSubmit();
 
             if($f->isSubmitted())
