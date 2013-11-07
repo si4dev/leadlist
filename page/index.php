@@ -11,7 +11,8 @@ class page_index extends Page {
         $all = $tt->addTab('All');
 
 
-        $g = $all->add('Grid');
+        $g = $all->add('Grid');        
+        $g->addColumn('button', 'edit');
         $g->setModel($m);
 
         $add = $g->addButton('add');
@@ -27,13 +28,16 @@ class page_index extends Page {
         $mcall = clone($m);
         $mcall->addCondition('status', 'open call');
         $gc = $call->add('Grid');
+        $gc->addColumn('button', 'edit');
         $gc->setModel($mcall);
+
 
 
         $memail= clone($m);
         $memail->addCondition('status', 'open email');
-        $gc = $email->add('Grid');
-        $gc->setModel($memail);
+        $ge = $email->add('Grid');
+        $ge->addColumn('button', 'edit');
+        $ge->setModel($memail);
 
         $leads = $tt->addTab('New Leads');
 
@@ -49,6 +53,11 @@ class page_index extends Page {
         if($id = $_GET['action'])
         {
             $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
+        }
+
+        if($id = $_GET['edit'])
+        {
+            $this->js()->univ()->frameURL('Action', $this->api->url('action/edit', array('id'=> $id)))->execute();
         }
 
    /*     $m = $this->add('Model_Lead');

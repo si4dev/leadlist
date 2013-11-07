@@ -9,17 +9,11 @@ class page_action_edit extends Page {
         if($id = $_GET['id'])
         {
             $this->api->stickyGET('id');
+
+            $m = $this->add('Model_Action')->load($_GET['id']);
             
-
-            $lead = $this->add('Model_Lead')->load($id);
-            $m = $lead->ref('Action')->addCondition('closed', false)->tryLoadAny();
-            if(!$m->loaded()){
-                $m->set('lead_id' , $id);
-            }
-
             $f = $this->add('Form');
             $f->setModel($m);
-            $f->addField('checkbox', 'close');
 
             $f->getElement('schedule')->js(true)->appendDtpicker(array('inline'=>'true', 'futureOnly',true));
             $f->addSubmit();
