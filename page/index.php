@@ -69,7 +69,7 @@ class page_index extends Page {
 
         $mscheduled = clone($m);
         $mscheduled->addCondition('schedule' , '>= ' , $mscheduled->dsql()->expr('now()') );
-        $gs = $this->add('Grid');
+        $gs = $schedule->add('Grid');
         $gs->addColumn('button', 'edit');
 
         $gs->setModel($mscheduled);
