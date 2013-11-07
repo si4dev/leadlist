@@ -1,20 +1,15 @@
 <?php
-class page_index extends Page {
+class page_openemails extends Page {
     function init(){
         parent::init();
         $m = $this->add('Model_Lead');
+        $m->addCondition('status', 'open email');
 
-        $tt = $this->add('Tabs');
-        $all = $tt->addTab('All');
-
-        $tcall = $tt->addTabURL('opencalls', 'Open Calls');
-        $temail= $tt->addTabURL('openemails', 'Open Emails');
-
-        $g = $all->add('Grid');
+        $g = $this->add('Grid');
         $g->addColumn('button','action' ,'Action');
         $g->setModel($m);
 
-        $g->addOrder()->move('status','first')->now();
+        //$g->addOrder()->move('status','first')->now();
         $qs = $g->addQuickSearch(array('status'));
 
         $g->addPaginator(100);
