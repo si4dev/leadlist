@@ -32,7 +32,7 @@ class page_index extends Page {
 
         $memail= clone($m);
         $memail->addCondition('status', 'open email');
-        $gc = $call->add('Grid');
+        $gc = $email->add('Grid');
         $gc->setModel($memail);
 
         $leads = $tt->addTab('New Leads');
