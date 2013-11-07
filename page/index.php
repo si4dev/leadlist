@@ -9,6 +9,10 @@ class page_index extends Page {
         $tt = $this->add('Tabs');
 
         $all = $tt->addTab('All');
+        $call = $tt->addTab('Call');
+        $email = $tt->addTab('Email');
+        $schedule= $tt->addTab('Scheduled');
+        $leads = $tt->addTab('New Leads');
 
 
         $g = $all->add('Grid');        
@@ -19,8 +23,7 @@ class page_index extends Page {
 
         $g->addColumn('expander', 'lead');
 
-        $call = $tt->addTab('Call');
-        $email = $tt->addTab('Email');
+
 
 
 
@@ -43,7 +46,6 @@ class page_index extends Page {
 
         $ge->addColumn('expander', 'lead');
 
-        $leads = $tt->addTab('New Leads');
 
         $model = $this->add('Model_Lead');
         $model->addCondition('actions' ,'0');
@@ -64,25 +66,13 @@ class page_index extends Page {
             $this->js()->univ()->frameURL('Action', $this->api->url('action/edit', array('id'=> $id)))->execute();
         }
 
-   /*     $m = $this->add('Model_Lead');
 
-       // $tt = $this->add('Tabs');
-       // $all = $tt->addTab('All');
+        $mscheduled = clone($m);
+        $mscheduled->addCondition('schedule' , '>= ' , $mscheduled->dsql()->expr('now()') );
+        $gs = $this->add('Grid');
+        $gs->addColumn('button', 'edit');
 
-      //  $tcall = $tt->addTabURL('opencalls', 'Open Calls');
-       // $temail= $tt->addTabURL('openemails', 'Open Emails');
-
-        $g = $all->add('Grid');
-        $g->addColumn('button','action' ,'Add action');
-        $g->addColumn('expander', 'leads_actions' , 'Actions');
-        $g->setModel($m);
-
-        $g->addOrder()->move('status','first')->now();
-        $qs = $g->addQuickSearch(array('status'));
-
-        $g->addPaginator(100);
-
-
-        */
+        $gs->setModel($mscheduled);
+        $gs->addColumn('expander', 'lead');
     }
 }
