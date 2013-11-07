@@ -21,7 +21,7 @@ class Model_Lead extends Model_Table {
         $this->hasMany('Action');
 
         $this->addExpression('status', function($m, $q){
-          return $m->refSQL('Action')->fieldQuery('status');
+          return $m->refSQL('Action')->fieldQuery('status')->where('closed', false);
         });
     }
 }

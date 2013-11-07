@@ -11,7 +11,8 @@ class page_index extends Page {
         $temail= $tt->addTabURL('openemails', 'Open Emails');
 
         $g = $all->add('Grid');
-        $g->addColumn('button','action' ,'Action');
+        $g->addColumn('button','action' ,'Add action');
+        $g->addColumn('expander', 'leads_actions' , 'Actions');
         $g->setModel($m);
 
         $g->addOrder()->move('status','first')->now();

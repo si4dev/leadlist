@@ -9,7 +9,7 @@ class page_leads_actions extends Page {
             $m = $this->add('Model_Action');
             $m->addCondition('lead_id', $id);
 
-            $g = $this->add('Grid');
+            $g = $this->add('CRUD', array('allow_del'=> false));
             $g->setModel($m);
 
 

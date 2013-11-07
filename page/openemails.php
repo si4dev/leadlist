@@ -6,7 +6,7 @@ class page_openemails extends Page {
         $m->addCondition('status', 'open email');
 
         $g = $this->add('Grid');
-        $g->addColumn('button','action' ,'Action');
+        $g->addColumn('button','action' ,'Edit');
         $g->setModel($m);
 
         //$g->addOrder()->move('status','first')->now();
@@ -16,7 +16,7 @@ class page_openemails extends Page {
 
         if($id = $_GET['action'])
         {
-            $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
+            $this->js()->univ()->frameURL('Action', $this->api->url('action/edit', array('id'=> $id)))->execute();
         }
     }
 }

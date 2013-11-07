@@ -11,6 +11,5 @@ class Model_Action extends Model_Table {
         $this->addField('notes')->type('text');
         $this->addField('schedule')->Sortable(true);
         $this->addField('closed')->type('boolean');
-
     }
 }
