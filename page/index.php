@@ -26,7 +26,7 @@ class page_index extends Page {
 
 
         $mcall = clone($m);
-        $mcall->addCondition('status', 'open call');
+        $mcall->addCondition('type', 'Call');
         $gc = $call->add('Grid');
         $gc->addColumn('button', 'edit');
         $gc->setModel($mcall);
@@ -34,7 +34,7 @@ class page_index extends Page {
 
 
         $memail= clone($m);
-        $memail->addCondition('status', 'open email');
+        $memail->addCondition('type', 'Email');
         $ge = $email->add('Grid');
         $ge->addColumn('button', 'edit');
         $ge->setModel($memail);
