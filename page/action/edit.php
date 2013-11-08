@@ -11,7 +11,7 @@ class page_action_edit extends Page {
             $this->api->stickyGET('id');
 
             $m = $this->add('Model_Action')->load($_GET['id']);
-            
+
             $f = $this->add('Form');
             $f->setModel($m);
 

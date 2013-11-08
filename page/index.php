@@ -15,18 +15,13 @@ class page_index extends Page {
         $leads = $tt->addTab('New Leads');
 
 
-        $g = $all->add('Grid');        
+        $g = $all->add('Grid');
         $g->addColumn('button', 'edit');
         $g->setModel($m);
 
         $add = $g->addButton('add');
 
         $g->addColumn('expander', 'lead');
-
-
-
-
-
 
         $mcall = clone($m);
         $mcall->addCondition('type', 'Call');
