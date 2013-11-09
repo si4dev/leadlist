@@ -14,18 +14,22 @@ class page_lead_details extends Page {
 
             $lead = $action->ref('lead_id');
 
-            $this->add('P')->set('Dossier N°: '.$lead['dossier_nr']);
-            $this->add('P')->set('Company: '.$lead['company']);
-            $this->add('P')->set('Contact Person: '.$lead['contactperson']);
-            $this->add('P')->set('Phone: '.$lead['phone']);
-            $this->add('P')->set('Email: '.$lead['email']);
-            $this->add('P')->set('Website: '.$lead['website']);
-            $this->add('P')->set('Branche: '.$lead['branche']);
-            $this->add('P')->set('Adress: '.$lead['address']);
-            $this->add('P')->set('PostCode: '.$lead['postcode']);
-            $this->add('P')->set('City: '.$lead['city']);
-            $this->add('P')->set('Legal form: '.$lead['legalform']);
-            $this->add('P')->set('Personnel: '.$lead['personnel']);
+
+            $details = '<p>';
+            $details .= '<strong>Dossier N°: </strong>'.$lead['dossier_nr'].'<br/>';
+            $details .= '<strong>Company: </strong>'.$lead['company'].'<br/>';
+            $details .= '<strong>Contact Person: </strong>'.$lead['contactperson'].'<br/>';
+            $details .= '<strong>Phone: </strong>'.$lead['phone'].'<br/>';
+            $details .= '<strong>Email: </strong>'.$lead['email'].'<br/>';
+            $details .= '<strong>Website: </strong>'.$lead['website'].'<br/>';
+            $details .= '<strong>Branche: </strong>'.$lead['branche'].'<br/>';
+            $details .= '<strong>Address: </strong>'.$lead['address'].'<br/>';
+            $details .= '<strong>Postcode: </strong>'.$lead['postcode'].'<br/>';
+            $details .= '<strong>City: </strong>'.$lead['city'].'<br/>';
+            $details .= '<strong>Legal form: </strong>'.$lead['legalform'].'<br/>';
+            $details .= '<strong>Personnel: </strong>'.$lead['personnel'].'<br/>';
+            $details .= '</p>';
+            $this->add('Html')->set($details);
 
             /*
 
