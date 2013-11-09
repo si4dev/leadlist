@@ -8,12 +8,12 @@ class page_index extends Page {
 
         $tt = $this->add('Tabs');
 
-        $all = $tt->addTab('All');
+
+        $leads = $tt->addTab('New Leads');
+        $all = $tt->addTab('Actions');
         $call = $tt->addTab('Call');
         $email = $tt->addTab('Email');
         $schedule= $tt->addTab('Scheduled');
-        $leads = $tt->addTab('New Leads');
-
 
         $g = $all->add('Grid');
         $g->addColumn('button', 'edit');
@@ -21,7 +21,7 @@ class page_index extends Page {
 
         $add = $g->addButton('add');
 
-        $g->addColumn('expander', 'lead');
+        $g->addColumn('expander', 'lead_details');
 
         $mcall = clone($m);
         $mcall->addCondition('type', 'Call');
@@ -29,7 +29,7 @@ class page_index extends Page {
         $gc->addColumn('button', 'edit');
         $gc->setModel($mcall);
 
-        $gc->addColumn('expander', 'lead');
+        $gc->addColumn('expander', 'lead_details');
 
 
 
@@ -39,7 +39,7 @@ class page_index extends Page {
         $ge->addColumn('button', 'edit');
         $ge->setModel($memail);
 
-        $ge->addColumn('expander', 'lead');
+        $ge->addColumn('expander', 'lead_details');
 
 
         $model = $this->add('Model_Lead');
@@ -48,6 +48,11 @@ class page_index extends Page {
         $g = $leads->add('Grid');
         $g->addColumn('button','action' ,'Add action');
         $g->setModel($model);
+
+        $g->addFormatter('company', 'wrap');
+        $g->addFormatter('branche', 'wrap');
+        $g->addFormatter('legalform', 'wrap');
+        $g->addFormatter('address', 'wrap');
 
         $g->addPaginator(100);
 
@@ -68,6 +73,6 @@ class page_index extends Page {
         $gs->addColumn('button', 'edit');
 
         $gs->setModel($mscheduled);
-        $gs->addColumn('expander', 'lead');
+        $gs->addColumn('expander', 'lead_details');
     }
 }
