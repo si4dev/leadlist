@@ -5,8 +5,6 @@ class page_import extends Page {
 
         $m = $this->add('Model_Lead');
 
-
-
         $mapping = array(
             'DossierNo'=>'dossier_nr',
             'LegalformcodeText'=>'legalform',

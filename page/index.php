@@ -7,21 +7,33 @@ class page_index extends Page {
         $m->join('lead');
 
         $tt = $this->add('Tabs');
-
-
+        //tab definitions
         $leads = $tt->addTab('New Leads');
         $all = $tt->addTab('Actions');
         $call = $tt->addTab('Call');
         $email = $tt->addTab('Email');
         $schedule= $tt->addTab('Scheduled');
 
-        $g = $all->add('Grid');
-        $g->addColumn('button', 'edit');
-        $g->setModel($m);
+        $model = $this->add('Model_Lead');
+        $model->addCondition('actions' ,'0');
+        $g = $leads->add('Grid');
+        $g->addColumn('button','action' ,'Add action');
+        $g->setModel($model);
 
-        $add = $g->addButton('add');
+        $g->addFormatter('company', 'wrap');
+        $g->addFormatter('branche', 'wrap');
+        $g->addFormatter('legalform', 'wrap');
+        $g->addFormatter('address', 'wrap');
 
-        $g->addColumn('expander', 'lead_details');
+        $g->addPaginator(100);
+
+        $ga = $all->add('Grid');
+        $ga->addColumn('button', 'edit');
+        $ga->setModel($m);
+
+        $add = $ga->addButton('add');
+
+        $ga->addColumn('expander', 'lead_details');
 
         $mcall = clone($m);
         $mcall->addCondition('type', 'Call');
@@ -41,21 +53,6 @@ class page_index extends Page {
 
         $ge->addColumn('expander', 'lead_details');
 
-
-        $model = $this->add('Model_Lead');
-        $model->addCondition('actions' ,'0');
-
-        $g = $leads->add('Grid');
-        $g->addColumn('button','action' ,'Add action');
-        $g->setModel($model);
-
-        $g->addFormatter('company', 'wrap');
-        $g->addFormatter('branche', 'wrap');
-        $g->addFormatter('legalform', 'wrap');
-        $g->addFormatter('address', 'wrap');
-
-        $g->addPaginator(100);
-
         if($id = $_GET['action'])
         {
             $this->js()->univ()->frameURL('Action', $this->api->url('action/add', array('id'=> $id)))->execute();
@@ -65,7 +62,6 @@ class page_index extends Page {
         {
             $this->js()->univ()->frameURL('Action', $this->api->url('action/edit', array('id'=> $id)))->execute();
         }
-
 
         $mscheduled = clone($m);
         $mscheduled->addCondition('schedule' , '>= ' , $mscheduled->dsql()->expr('now()') );

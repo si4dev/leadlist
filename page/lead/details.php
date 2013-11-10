@@ -7,7 +7,7 @@ class page_lead_details extends Page {
         if($_GET['action_id']){
 
             $this->api->stickyGET('action_id');
-            
+
 
             $m = $this->add('Model_Action');
             $action = $m->load($_GET['action_id']);
