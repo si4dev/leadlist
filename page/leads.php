@@ -11,6 +11,11 @@ class page_leads extends Page {
             $g = $c->grid;
             $b = $g->addButton('Import');
 
+            $g->addFormatter('company', 'wrap');
+            $g->addFormatter('branche', 'wrap');
+            $g->addFormatter('address', 'wrap');
+            $g->addFormatter('legalform', 'wrap');
+
             $b->js('click', $this->js()->univ()->redirect('import'));
             $g->addPaginator(100);
         }

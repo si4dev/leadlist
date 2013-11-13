@@ -29,19 +29,9 @@ class page_lead_details extends Page {
             $details .= '<strong>Legal form: </strong>'.$lead['legalform'].'<br/>';
             $details .= '<strong>Personnel: </strong>'.$lead['personnel'].'<br/>';
             $details .= '</p>';
+
             $this->add('Html')->set($details);
 
-            /*
-
-            $f = $this->add('Form');
-            $f->setModel($lead);
-            $f->addSubmit();
-
-            if($f->isSubmitted()){
-                $f->update();
-                $this->js()->univ()->successMessage('Saved!')->execute();
-            }
-            */
         }
 
     }

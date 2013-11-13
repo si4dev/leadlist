@@ -6,5 +6,6 @@ class page_status extends Page {
         $m = $this->add('Model_Status');
         $c = $this->add('CRUD');
         $c->setModel($m);
+
     }
 }
